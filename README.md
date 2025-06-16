@@ -1,4 +1,4 @@
-# 🎨 AI Image Restoration Studio - Frontend
+# 🎨 AI Image Restoration Studio
 
 A modern, interactive web application for professional image restoration, enhancement, and upscaling with real-time progress tracking and beautiful animations developed as a course project for American University of Technology by Malika Bakhtiyorova.
 
