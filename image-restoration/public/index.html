@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Restoration Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-magic"></i>
+                    <span>AI Image Studio</span>
+                </div>
+                <nav class="nav">
+                    <a href="#home" class="nav-link active" data-section="home">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="#restore" class="nav-link" data-section="restore">
+                        <i class="fas fa-wand-magic-sparkles"></i> Restore
+                    </a>
+                    <a href="#enhance" class="nav-link" data-section="enhance">
+                        <i class="fas fa-adjust"></i> Enhance
+                    </a>
+                    <a href="#tools" class="nav-link" data-section="tools">
+                        <i class="fas fa-toolbox"></i> Tools
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            Transform Your Images with
+                            <span class="gradient-text">AI Power</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Professional image restoration, enhancement, and upscaling using advanced AI algorithms
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" data-action="get-started">
+                                <i class="fas fa-rocket"></i> Get Started
+                            </button>
+                            <button class="btn btn-secondary" data-action="demo">
+                                <i class="fas fa-play"></i> Watch Demo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="floating-card">
+                            <div class="card-header">
+                                <div class="card-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="demo-image-container">
+                                    <div class="demo-image before"></div>
+                                    <div class="demo-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                    <div class="demo-image after"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features">
+                    <div class="container">
+                        <h2 class="section-title">Powerful Features</h2>
+                        <div class="features-grid">
+                            <div class="feature-card" data-animate="fadeInUp">
+                                <div class="feature-icon">
+                                    <i class="fas fa-magic"></i>
+                                </div>
+                                <h3>AI Restoration</h3>
+                                <p>Automatically restore old and damaged photos with intelligent algorithms</p>
+                            </div>
+                            <div class="feature-card" data-animate="fadeInUp">
+                                <div class="feature-icon">
+                                    <i class="fas fa-expand-arrows-alt"></i>
+                                </div>
+                                <h3>Smart Upscaling</h3>
+                                <p>Increase image resolution up to 8x while preserving quality and details</p>
+                            </div>
+                            <div class="feature-card" data-animate="fadeInUp">
+                                <div class="feature-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <h3>Color Enhancement</h3>
+                                <p>Adjust brightness, contrast, saturation, and color balance with precision</p>
+                            </div>
+                            <div class="feature-card" data-animate="fadeInUp">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3>Noise Reduction</h3>
+                                <p>Remove noise and grain while preserving important image details</p>
+                            </div>
+                            <div class="feature-card" data-animate="fadeInUp">
+                                <div class="feature-icon">
+                                    <i class="fas fa-images"></i>
+                                </div>
+                                <h3>Format Support</h3>
+                                <p>Support for JPEG, PNG, WebP, TIFF, BMP, and AVIF formats</p>
+                            </div>
+                            <div class="feature-card" data-animate="fadeInUp">
+                                <div class="feature-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <h3>Batch Processing</h3>
+                                <p>Process multiple images simultaneously for maximum efficiency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Restore Section -->
+            <section id="restore" class="section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">AI Image Restoration</h2>
+                        <p class="section-subtitle">Bring your old photos back to life with our advanced restoration technology</p>
+                    </div>
+
+                    <div class="workspace">
+                        <div class="upload-zone" id="uploadZone">
+                            <div class="upload-content">
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <h3>Drop your image here</h3>
+                                <p>or <span class="upload-link">browse files</span></p>
+                                <input type="file" id="fileInput" accept="image/*" hidden>
+                                <div class="supported-formats">
+                                    Supports: JPG, PNG, WebP, TIFF, BMP, AVIF
+                                </div>
+                            </div>
+                            <div class="upload-progress" id="uploadProgress" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="progress-text">Uploading...</div>
+                            </div>
+                        </div>
+
+                        <div class="controls-panel" id="controlsPanel" style="display: none;">
+                            <div class="controls-header">
+                                <h3>Restoration Settings</h3>
+                                <div class="preset-buttons">
+                                    <button class="btn btn-small" data-preset="general">General</button>
+                                    <button class="btn btn-small" data-preset="print">Print</button>
+                                    <button class="btn btn-small" data-preset="web">Web</button>
+                                </div>
+                            </div>
+                            
+                            <div class="controls-grid">
+                                <div class="control-group">
+                                    <label>Brightness</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="brightness" min="0.5" max="2" step="0.1" value="1.1">
+                                        <span class="slider-value">1.1</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label>Contrast</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="contrast" min="0.5" max="2" step="0.1" value="1.2">
+                                        <span class="slider-value">1.2</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label>Saturation</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="saturation" min="0.5" max="2" step="0.1" value="1.1">
+                                        <span class="slider-value">1.1</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label>Scale Factor</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="scale" min="1" max="4" step="0.1" value="1.5">
+                                        <span class="slider-value">1.5x</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="toggle-controls">
+                                <div class="toggle-group">
+                                    <label class="toggle">
+                                        <input type="checkbox" id="sharpen" checked>
+                                        <span class="toggle-slider"></span>
+                                        <span class="toggle-label">Sharpen</span>
+                                    </label>
+                                </div>
+                                <div class="toggle-group">
+                                    <label class="toggle">
+                                        <input type="checkbox" id="denoise" checked>
+                                        <span class="toggle-slider"></span>
+                                        <span class="toggle-label">Denoise</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-large" id="restoreBtn">
+                                    <i class="fas fa-magic"></i> Restore Image
+                                </button>
+                                <button class="btn btn-secondary" id="resetBtn">
+                                    <i class="fas fa-undo"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-panel" id="resultsPanel" style="display: none;">
+                        <div class="results-header">
+                            <h3>Results</h3>
+                            <div class="view-controls">
+                                <button class="btn btn-small active" data-view="comparison">
+                                    <i class="fas fa-columns"></i> Compare
+                                </button>
+                                <button class="btn btn-small" data-view="slider">
+                                    <i class="fas fa-exchange-alt"></i> Slider
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="image-comparison" id="imageComparison">
+                            <div class="comparison-view" id="comparisonView">
+                                <div class="image-container">
+                                    <img id="originalImage" alt="Original">
+                                    <div class="image-label">Original</div>
+                                </div>
+                                <div class="image-container">
+                                    <img id="restoredImage" alt="Restored">
+                                    <div class="image-label">Restored</div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-view" id="sliderView" style="display: none;">
+                                <div class="image-slider">
+                                    <img id="sliderOriginal" alt="Original">
+                                    <img id="sliderRestored" alt="Restored">
+                                    <div class="slider-handle">
+                                        <div class="slider-line"></div>
+                                        <div class="slider-button">
+                                            <i class="fas fa-arrows-alt-h"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-info">
+                            <div class="info-item">
+                                <span class="info-label">Processing Time:</span>
+                                <span class="info-value" id="processingTime">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Size Change:</span>
+                                <span class="info-value" id="sizeChange">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Quality Score:</span>
+                                <span class="info-value" id="qualityScore">-</span>
+                            </div>
+                        </div>
+                        
+                        <div class="download-section">
+                            <button class="btn btn-success btn-large" id="downloadBtn">
+                                <i class="fas fa-download"></i> Download Result
+                            </button>
+                            <div class="format-options">
+                                <select id="downloadFormat">
+                                    <option value="jpeg">JPEG</option>
+                                    <option value="png">PNG</option>
+                                    <option value="webp">WebP</option>
+                                    <option value="avif">AVIF</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enhance Section -->
+            <section id="enhance" class="section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Image Enhancement</h2>
+                        <p class="section-subtitle">Fine-tune your images with professional-grade controls</p>
+                    </div>
+                    <!-- Similar structure as restore but with enhancement-specific controls -->
+                </div>
+            </section>
+
+            <!-- Tools Section -->
+            <section id="tools" class="section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Advanced Tools</h2>
+                        <p class="section-subtitle">Professional tools for specific image processing needs</p>
+                    </div>
+                    
+                    <div class="tools-grid">
+                        <div class="tool-card" data-tool="upscale">
+                            <div class="tool-icon">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                            </div>
+                            <h3>Image Upscaling</h3>
+                            <p>Increase image resolution with AI-powered algorithms</p>
+                            <button class="btn btn-primary">Launch Tool</button>
+                        </div>
+                        
+                        <div class="tool-card" data-tool="denoise">
+                            <div class="tool-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Noise Reduction</h3>
+                            <p>Remove noise and grain from your images</p>
+                            <button class="btn btn-primary">Launch Tool</button>
+                        </div>
+                        
+                        <div class="tool-card" data-tool="color">
+                            <div class="tool-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3>Color Correction</h3>
+                            <p>Adjust color temperature, tint, and balance</p>
+                            <button class="btn btn-primary">Launch Tool</button>
+                        </div>
+                        
+                        <div class="tool-card" data-tool="format">
+                            <div class="tool-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h3>Format Converter</h3>
+                            <p>Convert between different image formats</p>
+                            <button class="btn btn-primary">Launch Tool</button>
+                        </div>
+                        
+                        <div class="tool-card" data-tool="thumbnail">
+                            <div class="tool-icon">
+                                <i class="fas fa-images"></i>
+                            </div>
+                            <h3>Thumbnail Generator</h3>
+                            <p>Create thumbnails and preview images</p>
+                            <button class="btn btn-primary">Launch Tool</button>
+                        </div>
+                        
+                        <div class="tool-card" data-tool="batch">
+                            <div class="tool-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <h3>Batch Processing</h3>
+                            <p>Process multiple images simultaneously</p>
+                            <button class="btn btn-primary">Launch Tool</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Processing Modal -->
+        <div class="modal" id="processingModal">
+            <div class="modal-content">
+                <div class="processing-animation">
+                    <div class="spinner"></div>
+                    <div class="processing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <h3 id="processingTitle">Processing Image...</h3>
+                <p id="processingDescription">Please wait while we enhance your image</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="processingProgress"></div>
+                </div>
+                <div class="progress-text" id="processingPercent">0%</div>
+            </div>
+        </div>
+
+        <!-- Tool Modal -->
+        <div class="modal" id="toolModal">
+            <div class="modal-content modal-large">
+                <div class="modal-header">
+                    <h3 id="toolTitle">Tool</h3>
+                    <button class="modal-close" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="toolContent">
+                    <!-- Tool-specific content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification System -->
+        <div class="notifications" id="notifications"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
